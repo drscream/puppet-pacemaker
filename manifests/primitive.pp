@@ -1,7 +1,7 @@
 define pacemaker::primitive (
   $provider,
-  $params,
-  $op,
+  $params = '',
+  $op = '',
   $shadow_cib = $pacemaker::shadow_cib
 ) {
   include pacemaker
@@ -16,6 +16,8 @@ define pacemaker::primitive (
     path        => '/bin:/usr/sbin',
     command     => "sh ${pacemaker::cib_pool}/primitive-${name}",
     require     => File["${pacemaker::cib_pool}/primitive-${name}"],
+    refreshonly => true,
+    subscribe   => File["${pacemaker::cib_pool}/primitive-${name}"],
   }
 }
 

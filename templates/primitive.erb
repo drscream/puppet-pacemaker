@@ -4,5 +4,5 @@
 
 crm<<EOF
 cib use <%= scope.lookupvar('shadow_cib') %>
-configure primitive <%= scope.lookupvar('name') %> <%= scope.lookupvar('provider') %> params <%= scope.lookupvar('params') %> op <%= scope.lookupvar('op') %>
+configure primitive <%= scope.lookupvar('name') %> <%= scope.lookupvar('provider') %><% if scope.lookupvar('params') != '' -%> params <%= scope.lookupvar('params') %><% end -%><% if scope.lookupvar('op') != '' -%> op <%= scope.lookupvar('op') %><% end %>
 EOF

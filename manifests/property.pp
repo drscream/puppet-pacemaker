@@ -15,6 +15,8 @@ define pacemaker::property (
     path        => '/bin:/usr/sbin',
     command     => "sh ${pacemaker::cib_pool}/property-${name}",
     require     => File["${pacemaker::cib_pool}/property-${name}"],
+    refreshonly => true,
+    subscribe   => File["${pacemaker::cib_pool}/property-${name}"],
   }
 }
 

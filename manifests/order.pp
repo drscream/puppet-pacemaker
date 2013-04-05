@@ -15,6 +15,8 @@ define pacemaker::order (
     path        => '/bin:/usr/sbin',
     command     => "sh ${pacemaker::cib_pool}/order-${name}",
     require     => File["${pacemaker::cib_pool}/order-${name}"],
+    refreshonly => true,
+    subscribe   => File["${pacemaker::cib_pool}/order-${name}"],
   }
 }
 

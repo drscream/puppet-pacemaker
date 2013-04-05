@@ -12,7 +12,8 @@ define pacemaker::create_new_cib (
   exec{"create_new_cib-${name}":
     path        => '/bin:/usr/sbin',
     command     => "sh ${pacemaker::cib_pool}/cib-${name}",
-    require     => File["${pacemaker::cib_pool}/cib-${name}"],
+    refreshonly => true,
+    subscribe   => File["${pacemaker::cib_pool}/cib-${name}"],
   }
 
 }

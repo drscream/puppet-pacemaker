@@ -1,0 +1,8 @@
+#
+# this file is managed by puppet!
+#
+
+crm<<EOF
+cib use <%= scope.lookupvar('shadow_cib') %>
+configure group <%= scope.lookupvar('name') %> <%= scope.lookupvar('params') %>
+EOF

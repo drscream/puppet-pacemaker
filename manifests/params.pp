@@ -4,7 +4,7 @@ class pacemaker::params {
   $shadow_cib = 'tmp'
 
   case $::operatingsystem {
-    'Debian': {
+    'Debian', 'Ubuntu': {
       $package = [ 'pacemaker' ]
       $conf_dir = '/etc/pacemaker.d'
       $cib_pool = "${conf_dir}/cib"

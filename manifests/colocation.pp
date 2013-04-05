@@ -15,6 +15,8 @@ define pacemaker::colocation (
     path        => '/bin:/usr/sbin',
     command     => "sh ${pacemaker::cib_pool}/colocation-${name}",
     require     => File["${pacemaker::cib_pool}/colocation-${name}"],
+    refreshonly => true,
+    subscribe   => File["${pacemaker::cib_pool}/colocation-${name}"],
   }
 }
 
